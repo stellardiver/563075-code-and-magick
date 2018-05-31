@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Виталий Мозковой](https://up.htmlacademy.ru/javascript/14/user/563075).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Смирнов](https://up.htmlacademy.ru/javascript/14/user/516117).
 
 ---
 
