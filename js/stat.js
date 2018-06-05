@@ -36,9 +36,6 @@ var getMaxElement = function (arr) {
 // Функция расчета случайного числа для подстановки в координату насыщенности цветовой модели hsl
 
 var randomSaturation = function (min, max) {
-  Math.ceil(min);
-  Math.floor(max);
-
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
