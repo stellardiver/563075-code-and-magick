@@ -47,46 +47,30 @@ var WIZARD_EYES = [
   'green'
 ];
 
+var WIZARDS_AMOUNT = 4;
+
 var pickRandom = function (param) {
   return Math.floor(Math.random() * param.length);
 };
 
-var wizards = [
-  {
-    name: WIZARD_NAMES[pickRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[pickRandom(WIZARD_SURNAMES)],
-    coatColor: WIZARD_COATS[pickRandom(WIZARD_COATS)],
-    eyesColor: WIZARD_EYES[pickRandom(WIZARD_EYES)]
-  },
-  {
-    name: WIZARD_NAMES[pickRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[pickRandom(WIZARD_SURNAMES)],
-    coatColor: WIZARD_COATS[pickRandom(WIZARD_COATS)],
-    eyesColor: WIZARD_EYES[pickRandom(WIZARD_EYES)]
-  },
-  {
-    name: WIZARD_NAMES[pickRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[pickRandom(WIZARD_SURNAMES)],
-    coatColor: WIZARD_COATS[pickRandom(WIZARD_COATS)],
-    eyesColor: WIZARD_EYES[pickRandom(WIZARD_EYES)]
-  },
-  {
-    name: WIZARD_NAMES[pickRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[pickRandom(WIZARD_SURNAMES)],
-    coatColor: WIZARD_COATS[pickRandom(WIZARD_COATS)],
-    eyesColor: WIZARD_EYES[pickRandom(WIZARD_EYES)]
-  }
-];
-
-var renderWizard = function () {
+var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
-  wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
+  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
   return wizardElement;
 };
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
+for (var i = 0; i < WIZARDS_AMOUNT; i++) {
+  var wizards = {
+    name: WIZARD_NAMES[pickRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[pickRandom(WIZARD_SURNAMES)],
+    coatColor: WIZARD_COATS[pickRandom(WIZARD_COATS)],
+    eyesColor: WIZARD_EYES[pickRandom(WIZARD_EYES)]
+  };
+  fragment.appendChild(renderWizard(wizards));
 }
 
 similarListElement.appendChild(fragment);
