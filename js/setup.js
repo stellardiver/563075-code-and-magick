@@ -56,18 +56,17 @@ var pickRandom = function (param) {
 
 // Функция, возвращающая объект мага, собранного из рандомных параметров
 var getWizard = function () {
-  var wizard = {
+  return {
     name: WIZARD_NAMES[pickRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[pickRandom(WIZARD_SURNAMES)],
     coatColor: WIZARD_COATS[pickRandom(WIZARD_COATS)],
     eyesColor: WIZARD_EYES[pickRandom(WIZARD_EYES)]
   };
-  return wizard;
 };
 
 // Функция, возвращающая массив из объектов магов
-var getWizardArray = function () {
+var getWizardArray = function (param) {
   var wizardArray = [];
-  for (var i = 0; i < WIZARDS_AMOUNT; i++) {
+  for (var i = 0; i < param; i++) {
     wizardArray.push(getWizard());
   }
   return wizardArray;
