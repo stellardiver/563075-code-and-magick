@@ -47,11 +47,32 @@ var WIZARD_EYES = [
   'green'
 ];
 
-var WIZARDS_AMOUNT = 4;
+var WIZARDS_AMOUNT = 2;
 
+// Функция для выбора случайного параметра
 var pickRandom = function (param) {
   return Math.floor(Math.random() * param.length);
 };
+
+// Функция, возвращающая объект мага, собранного из рандомных параметров
+var getWizard = function () {
+  var wizard = {
+    name: WIZARD_NAMES[pickRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[pickRandom(WIZARD_SURNAMES)],
+    coatColor: WIZARD_COATS[pickRandom(WIZARD_COATS)],
+    eyesColor: WIZARD_EYES[pickRandom(WIZARD_EYES)]
+  };
+  return wizard;
+};
+
+// Функция, возвращающая массив из объектов магов
+var getWizardArray = function () {
+  var wizardArray = [];
+  for (var i = 0; i < WIZARDS_AMOUNT; i++) {
+    wizardArray.push(getWizard());
+  }
+  return wizardArray;
+};
+
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -64,13 +85,9 @@ var renderWizard = function (wizard) {
 };
 
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < WIZARDS_AMOUNT; i++) {
-  var wizards = {
-    name: WIZARD_NAMES[pickRandom(WIZARD_NAMES)] + ' ' + WIZARD_SURNAMES[pickRandom(WIZARD_SURNAMES)],
-    coatColor: WIZARD_COATS[pickRandom(WIZARD_COATS)],
-    eyesColor: WIZARD_EYES[pickRandom(WIZARD_EYES)]
-  };
-  fragment.appendChild(renderWizard(wizards));
+var wizards = getWizardArray(WIZARDS_AMOUNT);
+for (var f = 0; f < WIZARDS_AMOUNT; f++) {
+  fragment.appendChild(renderWizard(wizards[f]));
 }
 
 similarListElement.appendChild(fragment);
