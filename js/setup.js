@@ -47,7 +47,7 @@ var WIZARD_EYES = [
   'green'
 ];
 
-var WIZARDS_AMOUNT = 2;
+var WIZARDS_AMOUNT = 4;
 
 // Функция для выбора случайного параметра
 var pickRandom = function (param) {
